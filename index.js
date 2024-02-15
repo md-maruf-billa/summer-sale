@@ -59,5 +59,25 @@ for (const card of allCard) {
 
 
 document.getElementById('apply-btn').addEventListener('click', function () {
-    
+    let lastScreen = parseFloat(get_element_by_ID('totalPrice').innerText);
+
+    let user_input = get_element_by_ID('input-field').value.split(' ').join('').toUpperCase();
+    let promo = get_element_by_ID('promo').innerText.split(' ').join('').toUpperCase();
+    console.log(promo)
+
+    if (lastScreen < 200) {
+        alert("Buy mor for using promo code.....")
+        
+    }
+    else if (user_input === promo) {
+        let result = (lastScreen * 0.2).toFixed(2);
+        set_inner_Text('discountPrice', result);
+        set_inner_Text('total',lastScreen-result)
+    }
+    else {
+        set_inner_Text('discountPrice','Invalid discount')
+    }
+    get_element_by_ID('input-field').value = ""
 })
+
+
